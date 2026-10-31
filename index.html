@@ -21,7 +21,9 @@
   /* hero */
   .hero{display:grid;grid-template-columns:200px 1fr;gap:36px;align-items:end;
     padding:72px 0 40px;border-bottom:2px solid var(--ink)}
-  .hero img{width:200px;height:250px;object-fit:cover;border-radius:6px;display:block}
+  .hphotos{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:200px}
+  .hphotos img{width:100%;height:118px;object-fit:cover;border-radius:6px;display:block}
+  .hphotos img.big{grid-column:span 2;height:250px}
   .hero h1{font-size:40px;letter-spacing:4px;line-height:1.2}
   .hero .alias{font-size:15px;color:var(--mut);letter-spacing:2px;margin-top:6px}
   .voice{font-size:19px;margin-top:22px;line-height:1.6}
@@ -106,7 +108,9 @@
 
   @media (max-width:720px){
     .hero{grid-template-columns:1fr;gap:20px}
-    .hero img{width:150px;height:190px}
+    .hphotos{width:100%;max-width:300px}
+    .hphotos img{height:100px}
+    .hphotos img.big{height:200px}
     .stats{grid-template-columns:repeat(3,1fr)}
     .quotes,.proc,.plist{grid-template-columns:1fr}
     .pgrid{grid-template-columns:repeat(2,1fr)}
@@ -127,7 +131,9 @@
 <div class="wrap">
 
   <div class="hero">
-    <img src="assets/me.jpg" alt="贺雨芝">
+    <div class="hphotos">
+      <img src="assets/me-1.jpg" alt="贺雨芝" class="big"><img src="assets/me-2.jpg" alt="贺雨芝"><img src="assets/me-3.jpg" alt="贺雨芝">
+    </div>
     <div>
       <h1 class="serif">贺雨芝</h1>
       <div class="alias">嘟灵 · 写字与排版的人</div>
