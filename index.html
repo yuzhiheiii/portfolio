@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<title>贺雨芝（嘟灵）· 写字与排版的人</title>
+<style>
+  :root{
+    --ink:#211e1a; --paper:#faf7f2; --card:#ffffff; --line:#e5dfd4;
+    --mut:#8a8378; --acc:#a63b22; --soft:#f1ece2;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    line-height:1.7;font-size:15px}
+  .serif{font-family:"Noto Serif SC","Songti SC","STSong",serif}
+  .wrap{max-width:880px;margin:0 auto;padding:0 22px}
+
+  /* hero */
+  .hero{display:grid;grid-template-columns:200px 1fr;gap:36px;align-items:end;
+    padding:72px 0 40px;border-bottom:2px solid var(--ink)}
+  .hero img{width:200px;height:250px;object-fit:cover;border-radius:6px;display:block}
+  .hero h1{font-size:40px;letter-spacing:4px;line-height:1.2}
+  .hero .alias{font-size:15px;color:var(--mut);letter-spacing:2px;margin-top:6px}
+  .voice{font-size:19px;margin-top:22px;line-height:1.6}
+  .voice::before{content:"「";color:var(--acc)}
+  .voice::after{content:"」";color:var(--acc)}
+  .line{margin-top:12px;color:#5c564d;font-size:14px}
+  .contact{margin-top:18px;font-size:13px;color:var(--mut)}
+  .contact b{color:var(--ink);font-weight:400}
+
+  /* section */
+  section{padding:52px 0 8px}
+  .shead{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+  .snum{font-size:13px;color:var(--acc);letter-spacing:2px}
+  .shead h2{font-size:24px;letter-spacing:3px}
+  .ssub{color:var(--mut);font-size:13px;margin-bottom:26px}
+
+  /* stats */
+  .stats{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:8px;
+    padding:16px 12px;text-align:center}
+  .stat .n{font-size:30px;color:var(--acc);line-height:1.2}
+  .stat .l{font-size:11.5px;color:var(--mut);margin-top:4px;line-height:1.4}
+
+  /* quotes */
+  .quotes{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+  .q{background:var(--soft);border-radius:8px;padding:20px 18px;font-size:13.5px}
+  .q .t{line-height:1.75}
+  .q .w{margin-top:12px;color:var(--mut);font-size:12px;border-top:1px dashed #d8d0c2;padding-top:10px}
+
+  /* article rows */
+  .arow{display:grid;grid-template-columns:190px 1fr;background:var(--card);
+    border:1px solid var(--line);text-decoration:none;color:inherit;margin-bottom:14px}
+  .arow:hover{border-color:#c9c0ae}
+  .arow img{width:100%;height:130px;object-fit:cover;display:block}
+  .arow .b{padding:14px 20px;display:flex;flex-direction:column;justify-content:center}
+  .arow h3{font-size:16px}
+  .arow .m{font-size:12px;color:var(--mut);margin-top:6px}
+  .arow .d{font-size:12.5px;color:var(--acc);margin-top:8px}
+  .arow.noimg{grid-template-columns:1fr}
+
+  /* poster grid */
+  .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .pcard{background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+  .pcard img{width:100%;display:block}
+  .pcard .c{padding:10px 12px;font-size:12.5px}
+  .pcard .c b{display:block;font-size:13.5px;font-weight:400}
+  .pcard .c span{color:var(--mut);font-size:12px}
+
+  /* zine strips */
+  .zine{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:16px;margin-bottom:18px}
+  .zine h3{font-size:15px;font-weight:400}
+  .zine .n{color:var(--mut);font-size:12px;margin-left:10px}
+  .zscroll{display:flex;gap:10px;overflow-x:auto;padding-top:12px}
+  .zscroll img{height:240px;width:auto;border:1px solid #eee;display:block}
+
+  /* personal list */
+  .plist{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .pitem{background:var(--card);border:1px solid var(--line);text-decoration:none;color:inherit}
+  .pitem img{width:100%;height:120px;object-fit:cover;display:block}
+  .pitem .b{padding:12px 14px}
+  .pitem h3{font-size:13.5px;font-weight:400;line-height:1.5}
+  .pitem .m{font-size:11.5px;color:var(--mut);margin-top:6px}
+  .pitem.xhs{display:flex;flex-direction:column;justify-content:center;padding:16px;border-top:3px solid #ff2442}
+  .pitem.xhs .tag{font-size:11px;color:#ff2442;letter-spacing:1px}
+
+  /* process */
+  .proc{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+  .pr{background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;
+    text-decoration:none;color:inherit}
+  .pr img{width:100%;height:150px;object-fit:cover;object-position:top;display:block}
+  .pr .b{padding:14px 16px}
+  .pr h3{font-size:14px;font-weight:400}
+  .pr p{font-size:12.5px;color:var(--mut);margin-top:6px;line-height:1.65}
+
+  /* site note + footer */
+  .selfnote{background:var(--soft);border-radius:8px;padding:18px 22px;font-size:13px;color:#5c564d;margin-top:6px}
+  .selfnote b{color:var(--ink);font-weight:400}
+  footer{margin-top:64px;border-top:2px solid var(--ink);padding:28px 0 60px;
+    display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px}
+  footer .big{font-size:18px;letter-spacing:2px}
+  footer .c{font-size:13px;color:var(--mut)}
+
+  @media (max-width:720px){
+    .hero{grid-template-columns:1fr;gap:20px}
+    .hero img{width:150px;height:190px}
+    .stats{grid-template-columns:repeat(3,1fr)}
+    .quotes,.proc,.plist{grid-template-columns:1fr}
+    .pgrid{grid-template-columns:repeat(2,1fr)}
+    .arow{grid-template-columns:1fr}
+    .arow img{height:160px}
+    .hero h1{font-size:32px}
+  }
+  @media print{
+    body{background:#fff}
+    section{padding:26px 0 4px}
+    .zscroll{overflow:visible;flex-wrap:wrap}
+    .zscroll img{height:150px}
+    .arow,.pcard,.zine,.q,.stat,.pr{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <img src="assets/me.jpg" alt="贺雨芝">
+    <div>
+      <h1 class="serif">贺雨芝</h1>
+      <div class="alias">嘟灵 · 写字与排版的人</div>
+      <p class="voice serif">像《重庆森林》的阿菲一样，跑进别人的视角里四处看看，写点有趣的、摆弄摆弄。</p>
+      <p class="line">会写、会排版、能自己把页面做上线——从文字到成品，一个人交付。</p>
+      <p class="contact">微信 <b>sayit03lnwi</b>　·　小红书 <b>doudous嘟</b></p>
+    </div>
+  </div>
+
+  <section id="num">
+    <div class="shead"><span class="snum">01</span><h2 class="serif">先看数字</h2></div>
+    <p class="ssub">都是可以从后台和现场核对的</p>
+    <div class="stats">
+      <div class="stat"><div class="n serif">6</div><div class="l">合作过的组织与项目</div></div><div class="stat"><div class="n serif">1</div><div class="l">付费委托，且复购</div></div><div class="stat"><div class="n serif">71</div><div class="l">摇滚乐史系列四期累计到场</div></div><div class="stat"><div class="n serif">511</div><div class="l">单篇推文阅读 · 涨粉 12</div></div><div class="stat"><div class="n serif">9</div><div class="l">活动海报</div></div><div class="stat"><div class="n serif">2</div><div class="l">手工 zine</div></div>
+    </div>
+  </section>
+
+  <section id="voices">
+    <div class="shead"><span class="snum">02</span><h2 class="serif">别人的话</h2></div>
+    <p class="ssub">合作方原话，匿名转述；截图可提供</p>
+    <div class="quotes">
+      <div class="q"><div class="t">是之前心声音乐会的发起人很喜欢你做的这篇，来问能不能帮忙再做一篇大的——保底是之前 pay 的水平，我会尽量争取更高。</div><div class="w">合作方转述 · 这篇「大排版」即心声 Mind 音乐会开票推文</div></div><div class="q"><div class="t">导演大喜欢。</div><div class="w">《夫妻一场》纪录片上海首映 · 观影团招募文案的反馈</div></div><div class="q"><div class="t">海报做的很酷。</div><div class="w">活动合作方</div></div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="shead"><span class="snum">03</span><h2 class="serif">为组织与社群做的推文</h2></div>
+    <p class="ssub">从文案到排版一次交付，点击可读原文</p>
+    
+    <a class="arow " href="https://mp.weixin.qq.com/s/QvK0EgolFW3tHC2vO5dwYQ" target="_blank">
+      <img src="assets/cover-4.jpg" alt="">
+      <div class="b">
+        <h3>CS 物种图鉴：关于共同栖居的 6 个月</h3>
+        <div class="m">Commons Station 公众号 · 原创并排版 · 2026.09</div>
+        <div class="d">阅读 511 · 在看 34 · 分享 28 · 涨粉 12</div>
+      </div>
+    </a>
+    
+    <a class="arow " href="https://mp.weixin.qq.com/s/e-DRglPhgoBLSjLbCIYE4g" target="_blank">
+      <img src="assets/cover-5.jpg" alt="">
+      <div class="b">
+        <h3>国内首场由亲历者主导的精神健康主题音乐会正式开票</h3>
+        <div class="m">心声 Mind 公众号 · 付费委托 · 排版（文案修改） · 2026.09</div>
+        <div class="d">此前的小排版让对方返单了这篇</div>
+      </div>
+    </a>
+    
+    <a class="arow noimg" >
+      
+      <div class="b">
+        <h3>《夫妻一场》纪录片上海首映 · 观影团招募</h3>
+        <div class="m">独立放映项目 · 文案撰写并排版 · 2026.10</div>
+        <div class="d">导演反馈「大喜欢」；实际到场为整厅</div>
+      </div>
+    </a>
+    
+    <a class="arow " href="https://mp.weixin.qq.com/s/-Q-L0wGdg0EZumhYUvtu4g" target="_blank">
+      <img src="assets/rock-vol1.jpg" alt="">
+      <div class="b">
+        <h3>摇滚乐史分享系列 · 四期连载（Vol.1-4）</h3>
+        <div class="m">Commons Station → Dweller 共居社区 → 铉外乐音乐咖啡厅 · 文案撰写、海报制作、排版 · 2026.09 - 11</div>
+        <div class="d">四期累计到场 71 人；每期一篇推文 + 一张海报</div>
+      </div>
+    </a>
+    
+  </section>
+
+  <section id="visual">
+    <div class="shead"><span class="snum">04</span><h2 class="serif">海报与视觉</h2></div>
+    <p class="ssub">前四张是一个系列：同一套拼贴语言，从校园空间一路做到共居社区和咖啡厅</p>
+    <div class="pgrid">
+      
+      <div class="pcard"><img src="assets/rock-vol1.jpg" alt="摇滚乐史分享 Vol.1"><div class="c"><b>摇滚乐史分享 Vol.1</b><span>Commons Station 场</span></div></div>
+      
+      <div class="pcard"><img src="assets/rock-vol2.jpg" alt="摇滚乐史分享 Vol.2"><div class="c"><b>摇滚乐史分享 Vol.2</b><span>Dweller 共居社区场</span></div></div>
+      
+      <div class="pcard"><img src="assets/rock-vol3.jpg" alt="摇滚乐史分享 Vol.3"><div class="c"><b>摇滚乐史分享 Vol.3</b><span>Dweller 合作伙伴场</span></div></div>
+      
+      <div class="pcard"><img src="assets/rock-vol4.jpg" alt="摇滚乐史分享 Vol.4"><div class="c"><b>摇滚乐史分享 Vol.4</b><span>铉外乐音乐咖啡厅场</span></div></div>
+      
+      <div class="pcard"><img src="assets/poster-xqs.jpg" alt="烂天使相亲会 Act II"><div class="c"><b>烂天使相亲会 Act II</b><span>Commons Station 即兴客厅</span></div></div>
+      
+      <div class="pcard"><img src="assets/poster-xsyy.jpg" alt="心声音乐聚会"><div class="c"><b>心声音乐聚会</b><span>Dweller 客厅 · 在黑暗里把歌唱给住在身体里的 TA</span></div></div>
+      
+      <div class="pcard"><img src="assets/poster-xph.jpg" alt="CS 摄影集选片会"><div class="c"><b>CS 摄影集选片会</b><span>Commons Station</span></div></div>
+      
+      <div class="pcard"><img src="assets/poster-flowart.jpg" alt="息游 FLOW ART 流动艺术分享会"><div class="c"><b>息游 FLOW ART 流动艺术分享会</b><span>美丽园大厦 · 分享人孙鹤</span></div></div>
+      
+      <div class="pcard"><img src="assets/poster-lsr.jpg" alt="联结日常 · 黎巴嫩与叙利亚志愿故事"><div class="c"><b>联结日常 · 黎巴嫩与叙利亚志愿故事</b><span>爱之书公益分享会 · 到场 55 人</span></div></div>
+      
+    </div>
+  </section>
+
+  <section id="book">
+    <div class="shead"><span class="snum">05</span><h2 class="serif">手工书</h2></div>
+    <p class="ssub">从写到手作排版独立完成，左右滑动看内页</p>
+    
+    <div class="zine">
+      <h3 class="serif">从日常到日常<span class="n">个人诗集 booklet · 2023-2026 · 12 页</span></h3>
+      <div class="zscroll"><img src="assets/zine-daily-1.jpg" alt=""><img src="assets/zine-daily-2.jpg" alt=""><img src="assets/zine-daily-3.jpg" alt=""><img src="assets/zine-daily-4.jpg" alt=""><img src="assets/zine-daily-5.jpg" alt=""><img src="assets/zine-daily-6.jpg" alt=""></div>
+    </div>
+    
+    <div class="zine">
+      <h3 class="serif">北征（大）失败之旅<span class="n">个人拼贴 zine · 6 页</span></h3>
+      <div class="zscroll"><img src="assets/zine-rmb-1.jpg" alt=""><img src="assets/zine-rmb-2.jpg" alt=""><img src="assets/zine-rmb-3.jpg" alt=""><img src="assets/zine-rmb-4.jpg" alt=""><img src="assets/zine-rmb-5.jpg" alt=""><img src="assets/zine-rmb-6.jpg" alt=""></div>
+    </div>
+    
+  </section>
+
+  <section id="personal">
+    <div class="shead"><span class="snum">06</span><h2 class="serif">给自己写的东西</h2></div>
+    <p class="ssub">个人公众号「宇知he」与小红书「doudous嘟」，点击可读</p>
+    <div class="plist">
+      
+      <a class="pitem " href="https://mp.weixin.qq.com/s/BgCXptV34WEK1hy_LVlv4A" target="_blank">
+        <img src="assets/cover-1.jpg" alt="">
+        <div class="b">
+          
+          <h3>在上海居无定所的章鱼哥养着一棵胡萝卜</h3>
+          <div class="m">个人公众号 · 宇知he · 2026.06</div>
+        </div>
+      </a>
+      
+      <a class="pitem " href="https://mp.weixin.qq.com/s/2Z92_6_GeuziSPZNqbAKMQ" target="_blank">
+        <img src="assets/cover-2.jpg" alt="">
+        <div class="b">
+          
+          <h3>“我们认识了两年多”才让这篇诗评成为可能</h3>
+          <div class="m">个人公众号 · 宇知he · 2026.06</div>
+        </div>
+      </a>
+      
+      <a class="pitem " href="https://mp.weixin.qq.com/s/PMzBlWM2DJ-9aA4f8UNFog" target="_blank">
+        <img src="assets/cover-3.jpg" alt="">
+        <div class="b">
+          
+          <h3>戏仿小野洋子《葡萄柚》｜食物篇或音乐篇</h3>
+          <div class="m">个人公众号 · 宇知he · 2026.07</div>
+        </div>
+      </a>
+      
+      <a class="pitem xhs" href="https://www.xiaohongshu.com/discovery/item/69e87b3f0000000023025afd?source=webshare&xhsshare=pc_web&xsec_token=ABxugP1vKU8AyedOL0SChn3JueVTUZ8SUmkzsT44rPA6Q=&xsec_source=pc_share" target="_blank">
+        
+        <div class="b">
+          <div class="tag">小红书</div>
+          <h3>从成都唯一赚钱的独立书店"读本屋"开始暴走</h3>
+          <div class="m">小红书 · doudous嘟</div>
+        </div>
+      </a>
+      
+      <a class="pitem xhs" href="https://www.xiaohongshu.com/discovery/item/6aac2aa8000000001203d949?source=webshare&xhsshare=pc_web&xsec_token=ABAzoTH8VffE6gUHg_x81_rJ_BrLDZehItg4D6KP8r7dY=&xsec_source=pc_share" target="_blank">
+        
+        <div class="b">
+          <div class="tag">小红书</div>
+          <h3>早知道这个写作方法就好了！</h3>
+          <div class="m">小红书 · doudous嘟</div>
+        </div>
+      </a>
+      
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="shead"><span class="snum">07</span><h2 class="serif">我怎么练出来的</h2></div>
+    <p class="ssub">成果背后每天的笨功夫</p>
+    <div class="proc">
+      
+      <div class="pr">
+        <img src="assets/process-hook.jpg" alt="">
+        <div class="b"><h3>拆了 30 多条爆款开头</h3><p>把刷到的推文和帖子逐条拆结构、钩子和转化路径，练「为什么这条有人点」的眼力</p></div>
+      </div>
+      
+      <div class="pr">
+        <img src="assets/process-notes.jpg" alt="">
+        <div class="b"><h3>对标账号逐篇笔记</h3><p>选定对标后逐篇记录其选题、封面、发布节奏，形成自己的发什么、怎么发的判断</p></div>
+      </div>
+      
+      <a href="https://www.xiaohongshu.com/discovery/item/6a798b7300000000320225b1?source=webshare&xhsshare=pc_web&xsec_token=ABcN2GK4H3YqlmDMeTZ_uwWtTWOFvOa6SG1BNNsWsLXmI=&xsec_source=pc_share" target="_blank" class="pr">
+        
+        <div class="b"><h3>自学网页，做出了这个站</h3><p>从零学 HTML/CSS，练习件攒了一整个文件夹；本页无建站工具，手写完成。过程记录在小红书「想做网页，自学成功」</p></div>
+      </a>
+      
+    </div>
+    <div class="selfnote" style="margin-top:20px">
+      <b>关于这个页面：</b>没有用任何建站工具，HTML 和 CSS 是手写的——排版这件事，我做到最后一层。
+    </div>
+  </section>
+
+  <footer>
+    <div class="big serif">贺雨芝 · 嘟灵</div>
+    <div class="c">微信 sayit03lnwi　·　小红书 doudous嘟　·　要过程截图和后台数据，随时来要</div>
+  </footer>
+
+</div>
+</body>
+</html>
